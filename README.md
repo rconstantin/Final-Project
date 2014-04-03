@@ -6,6 +6,7 @@ Final Project for DGMD E-15 using the BeagleBone Black
 Topic: Home Automation and Security
 
 I would like to build an application using the BeagleBone Black and javascript. I decided to explore a home automation and security project because we are currenly in the process of building a new home and I thought it would be good if this project could satisfy (as a minimum) the following requirements:
+
         1 - Garage Door Monitoring Capability: 
 
                 - Detect and report if Garage Door is left open for more than 15-30 minutes (duration configurable). Reporting: email and/or text message to one or more registered email/text or a buzzer sound (not too alarming).
