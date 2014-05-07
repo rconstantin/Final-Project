@@ -1,0 +1,34 @@
+root@beaglebone:~/node_modules/openzwave# node test.js 
+scanning homeid=0x184e288...
+node3: nop
+node1: Aeon Labs, Z-Stick S2
+node1: name="", type="Static PC Controller", location=""
+node1: class 32
+node1:   Basic=0
+scan complete, hit ^C to finish.
+Unhandled notification: 4
+Unhandled notification: 4
+node3: Aeon Labs, product=001d, type=0002
+node3: name="", type="Routing Binary Sensor", location=""
+node3: class 32
+node3: class 48
+node3:   Sensor=false
+node3: class 113
+node3:   Alarm Type=0
+node3:   Alarm Level=255
+node3: class 128
+node3:   Battery Level=100
+node3: class 132
+node3:   Wake-up Interval=0
+node3:   Minimum Wake-up Interval=240
+node3:   Maximum Wake-up Interval=16777215
+node3:   Default Wake-up Interval=0
+node3:   Wake-up Interval Step=240
+node3: class 134
+node3:   Library Version=3
+node3:   Protocol Version=3.67
+node3:   Application Version=1.18
+scan complete, hit ^C to finish.
+Unhandled notification: 10
+Unhandled notification: 10
+Unhandled notification: 10

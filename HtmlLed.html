@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>BeagleBone Black Demo</title>
+ 
+    <!-- jQuery and jQuery Mobile 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <!-- <script src="http://10.0.1.33:8080/socket.io/socket.io.js"></script>-->
+
+    <!-- Code for socket.io and device orientation handling -->
+    <script src="./js/LedCtl.js"></script>
+    <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+ 
+    #me {
+        width: 200px;
+        height: 160px;
+        position: relative;
+        left: 500px;
+        top: 200px;
+    }
+    </style>
+</head>    
+
+<body>
+<!-- Home -->
+
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <h3>
+            BeagleBone Black
+        </h3>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label for="slider1">
+                Red LED
+            </label>
+            <input id="slider1" type="range" name="slider" value="0" min="0" max="100"
+            data-highlight="false" data-theme="b" onChange="ledRed(value);">
+        </div>
+        <div data-role="fieldcontain">
+            <label for="slider2">
+                Yellow LED
+            </label>
+            <input id="slider2" type="range" name="slider" value="0" min="0" max="100"
+            data-highlight="false" data-theme="b" onChange="ledYellow(value);">
+        </div>
+        <div data-role="fieldcontain">
+            <label for="slider3">
+                Green LED
+            </label>
+            <input id="slider3" type="range" name="slider" value="0" min="0" max="100"
+            data-highlight="false" data-theme="b" onChange="ledGreen(value);">
+        </div>
+        <div data-role="fieldcontain">
+            <label for="Pot">
+                Potentiometer
+            </label>
+            <select name="toggleswitch2" id="Pot" data-theme="b" data-role="slider" onchange="readPotentiometer(value);">
+                <option value="off">Off</option>
+                <option value="on">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div id='me'></div>
+</body>
+</html>
