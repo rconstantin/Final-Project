@@ -1,0 +1,81 @@
+Status Update from 5/7/14:
+Hello,
+I have been trying very hard to work through problems I encountered trying to integrate the z-wave Door/Window sensor into my project. Here is the status of where I am at:
+
+1 - The embedded Xively library is limited and does not support z-wave notifications.
+2 - I did some research and it seemed like the openzwave (github) project was built on top of Node.js to handle notifications from z wave devices
+3 - I proceed to install it on the beagle bone black and had to research to get a correct recipe 
+     3.1 - I was getting a compile error that turned out to be a bug in the latest angstrom distribution: found a work-around
+            configure.js so you could modify it. Here are lines 104 through 108 of configure.js:
+
+             if (semver.gte(version, '2.5.0') && semver.lt(version, '3.0.0')) {
+                    getNodeDir()
+             } else {
+                 failPythonVersion(version)
+            }
+        Replace all five lines with the following one:
+
+            getNodeDir();
+        The full path for configure.js is: /usr/lib/node_modules/npm/node_modules/node-gyp/lib/configure.js
+    3.2 - I also needed to install additional pkgs for openzwave to be happy:
+        opkg install python-misc
+        opkg install systemd-dev
+        npm install openzwave
+
+With this I got a system that was happy with the z-stick and recognized it as an active z-wave controller when plugged into the BBB USB.
+
+The problem with the sensor is that the original code did not recognize the state change: i.e when the door is open (magnet away). It was failing to recognize notification 10 (see below).
+
+root@beaglebone:~/node_modules/openzwave# node test.js 
+scanning homeid=0x184e288...
+node3: nop
+node1: Aeon Labs, Z-Stick S2
+node1: name="", type="Static PC Controller", location=""
+node1: class 32
+node1:   Basic=0
+scan complete, hit ^C to finish.
+Unhandled notification: 4
+Unhandled notification: 4
+node3: Aeon Labs, product=001d, type=0002
+node3: name="", type="Routing Binary Sensor", location=""
+node3: class 32
+node3: class 48
+node3:   Sensor=false
+node3: class 113
+node3:   Alarm Type=0
+node3:   Alarm Level=255
+node3: class 128
+node3:   Battery Level=100
+node3: class 132
+node3:   Wake-up Interval=0
+node3:   Minimum Wake-up Interval=240
+node3:   Maximum Wake-up Interval=16777215
+node3:   Default Wake-up Interval=0
+node3:   Wake-up Interval Step=240
+node3: class 134
+node3:   Library Version=3
+node3:   Protocol Version=3.67
+node3:   Application Version=1.18
+scan complete, hit ^C to finish.
+Unhandled notification: 10
+Unhandled notification: 10
+Unhandled notification: 10
+
+I looked through the code and other log files and it looked like they missed this type of sensor event. From the Driver log file, I could see the correct behavior: where level 0 corresponds to door closed (magnet aligned with main sensor) and level 255 is door open.
+
+2014-05-07 18:54:08.121 Node003, Received Basic set from node 3: level=255.  Sending event notification.
+2014-05-07 18:54:08.401 Node003,   Received: 0x01, 0x09, 0x00, 0x04, 0x00, 0x03, 0x03, 0x20, 0x01, 0x00, 0xd3
+2014-05-07 18:54:08.404 
+2014-05-07 18:54:08.407 Node003, Received Basic set from node 3: level=0.  Sending event notification.
+2014-05-07 18:54:09.320 Node003,   Received: 0x01, 0x09, 0x00, 0x04, 0x00, 0x03, 0x03, 0x20, 0x01, 0xff, 0x2c
+2014-05-07 18:54:09.323 
+2014-05-07 18:54:09.325 Node003, Received Basic set from node 3: level=255.  Sending event notification.
+
+I made multiple changes to the code but I seem to lose the level (0/255) in the translation (when interpreting the notification at the node.js level.
+
+I am not sure how to proceed with this. I tried to put as much of this on my github project (https://github.com/rconstantin/Final-Project) with the exception of openzwave project (https://github.com/jperkin/node-openzwave)
+
+I will also put a copy of this email on github in the release notes.
+
+Thanks,
+Robbie
