@@ -1,6 +1,6 @@
 // Take actions based on device orientation (works on mobile devices only)
-var server = 'http://10.0.1.101:8080';
-//var server = 'http://192.168.7.2:8080';
+//var server = 'http://10.0.1.100:8080';
+var server = 'http://192.168.7.2:8080';
 
 
 function initLeds() {
