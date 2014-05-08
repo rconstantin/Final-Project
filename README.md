@@ -29,4 +29,23 @@ Questions:
 
         2 - besides the BeagleBone and sensors, and a wireless router, 
 
+UPDATE: 5/8/2014
+
+Note regarding my email on blocking issue: I have resolved the problems with the openzwave software and I am currently able to communicated between the sensor and the beaglebone via the z-stick.
+
+1) WHAT WOULD I LIKE TO HAVE COMPLETED BY NEXT WEEK:
+     By the end of next week, I would like to have the foundation for my home automation platform in place. This includes:
+        - complete the code for monitoring the Z-Wave Window/Door Sensor
+        - add the capability to notify web app client on a local host
+        - add the capability to notify xively server about the state Door Open/Door Close and have displayed
+        - List the TO-DO additions that I would like to add past next week: add more devices, use this sensor platform for other applications
+
+2) WHAT WOULD I LIKE TO HAVE ACHIEVED BY THE END OF TONIGHT'S CLASS:
+
+    By the end of this evening, I would like to:
+         - be able to have create a file to store data from the node.js zwave monitoring engine and have it picked up and processed by the xively python engine to send to my xively page.  
+         - figure out if I could push the state change from the BBB instead of/in addition to the (xively) client polling.
+
+
+
 
