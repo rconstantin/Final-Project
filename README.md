@@ -21,11 +21,13 @@ I would like to build an application using the BeagleBone Black and javascript. 
 
         4 - basement flooding (if sump-pump stops working and water level exceeds danger zone).
 
-        5 - 
         
 Questions: 
 
-        1 - will any of the remote notifications/control require web hosting services and server side programing (php / database for persistent storage). Could initial project rely on purely javascript and localhost/wifi with future extension to use web hosting for remote control/notification
+        1 - will any of the remote notifications/control require web hosting 
+        services and server side programing (php / database for persistent 
+            storage). Could initial project rely on purely javascript and localhost/wifi with future extension to use web hosting for remote
+             control/notification
 
         2 - besides the BeagleBone and sensors, and a wireless router, 
 
@@ -43,8 +45,11 @@ Note regarding my email on blocking issue: I have resolved the problems with the
 2) WHAT WOULD I LIKE TO HAVE ACHIEVED BY THE END OF TONIGHT'S CLASS:
 
     By the end of this evening, I would like to:
-         - be able to have create a file to store data from the node.js zwave monitoring engine and have it picked up and processed by the xively python engine to send to my xively page.  
-         - figure out if I could push the state change from the BBB instead of/in addition to the (xively) client polling.
+         - be able to have create a file to store data from the node.js zwave 
+         monitoring engine and have it picked up and processed by the xively 
+         python engine to send to my xively page.  
+         - figure out if I could push the state change from the BBB instead 
+         of/in addition to the (xively) client polling.
 
 
 
