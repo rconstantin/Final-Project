@@ -38,6 +38,23 @@ function httpserver (req, res) {
         res.writeHead(200);
         res.end(message);
    }
+   function readTextFile(file)
+   {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    var allText = rawFile.responseText;
+                }
+            }
+        }
+        rawFile.send(null);
+    }
+
     var url = req['url'];
    // console.log(url);
     var digitRE = /\/([0-9]\.[0-9])/;
@@ -72,6 +89,12 @@ function httpserver (req, res) {
         b.analogRead("P9_40", function(x) { returnSuccess(x['value'],"" + x['value']); });
         //value = readLEDBrightness();
         //console.log("Reading current P9_14: " + value);
+    }
+    else if (url == '/readSensor') {
+        // if we go to 192.168.7.2:8080/readPot
+        readTextFile('3.txt');
+        // return the Sensor reading
+        
     }
     else { //if (url == '/setLed') {
         // if we go to 192.168.7.2:8080/readPot

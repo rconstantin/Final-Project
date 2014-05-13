@@ -1,6 +1,6 @@
 // Take actions based on device orientation (works on mobile devices only)
-//var server = 'http://10.0.1.100:8080';
-var server = 'http://192.168.7.2:8080';
+var server = 'http://10.0.1.100:8080';
+//var server = 'http://192.168.7.2:8080';
 
 
 function initLeds() {
@@ -62,6 +62,7 @@ function potTimer() // grab the potentiometer reading
     // and rotate the div proportional to the reading
     document.getElementById('me').style.webkitTransform = 'rotate(' + 360 * potReading + 'deg)';
 }
+
 function readPotentiometer(value) {
     if (value == "on") {
         if (myTimer) {
@@ -74,9 +75,37 @@ function readPotentiometer(value) {
         cancelReadPot();
     }
 }
+
+var myTimer1 = null;
+function sensorTimer() // grab the potentiometer reading
+{
+    var sensorReading = parseFloat(httpGET(server+'/readSensor'));
+    console.log("Returned sensor reading = " + sensorReading);
+    // set the innerHTML to the reading
+    document.getElementById('sensor').style.backgroundColor = 
+        (sensorReading==0) ? 'green': 'red';
+    
+}
+function readDoorSensor(value) {
+    if (value == "on") {
+        if (myTimer1) {
+            cancelReadSensor();
+        }
+        myTimer1 = window.setInterval(function() {
+            sensorTimer()}, 1000); 
+    }
+    else {
+        cancelReadSensor();
+    }
+}
 function cancelReadPot() {
     window.clearInterval(myTimer);
     document.getElementById('me').innerHTML = null;
     myTimer = null;
 }
-initLeds();    
+function cancelReadSensor() {
+    window.clearInterval(myTimer1);
+    document.getElementById('sensor').style.backgroundColor = 'white';
+    myTimer1 = null;
+}
+initLeds();
