@@ -113,16 +113,12 @@ If the correct version information is displayed then maybe there is an issue in 
 
 The problem you are having occurs in configure.js so you could modify it. Here are lines 104 through 108 of configure.js:
 
-  if (semver.gte(version, '2.5.0') && semver.lt(version, '3.0.0')) {
-  
-		getNodeDir()
-		
-  } else {
-  
-		failPythonVersion(version)
-		
-  }
-  
+	if (semver.gte(version, '2.5.0') && semver.lt(version, '3.0.0')) {  
+    	getNodeDir()       
+	} else {
+    	failPythonVersion(version)  
+	}
+
 Replace all five lines with the following one:
 
    		getNodeDir();
