@@ -91,7 +91,7 @@ Added local Client Door Sensor Knob (On/Off) to periodically monitor the state o
 + Door Open for more than 5 minutes: Email is generated when door is left open for more than 5 minutes
 ![Door Open Long](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/email_door_open.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2VtYWlsX2Rvb3Jfb3Blbi5wbmciLCJleHBpcmVzIjoxNDAwNzY4MDkzfQ%3D%3D--981c202b9c15b9fe4b524e7edb02d5331f05023c)
 + Door Closed: Email indicating door is closed - only sent after email door open notification
-![Door Open Email Clear](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/email_door_closed.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2VtYWlsX2Rvb3JfY2xvc2VkLnBuZyIsImV4cGlyZXMiOjE0MDA3NjgxMTR9--2d71dcaf214895b3942bb11ed1928e8f3c872689
+![Door Open Email Clear](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/email_door_closed.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2VtYWlsX2Rvb3JfY2xvc2VkLnBuZyIsImV4cGlyZXMiOjE0MDA3NjgxMTR9--2d71dcaf214895b3942bb11ed1928e8f3c872689)
 
 ---
 
