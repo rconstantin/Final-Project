@@ -33,7 +33,7 @@ sent out when certain conditions are reached.
 
 #### Hardware Setup & Software components:
 
-![Hardware Setup](https://github.com/rconstantin/Final-Project/blob/master/README_media/beaglebone%20with%20zwave%20devices.png)
+![Hardware Setup](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/beaglebone%20with%20zwave%20devices.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2JlYWdsZWJvbmUgd2l0aCB6d2F2ZSBkZXZpY2VzLnBuZyIsImV4cGlyZXMiOjE0MDA3NjgwMDh9--a74c41137527712cb6f9823b477e9bbdd627afd6)
 
 The ["Z-wave protocol"](http://en.wikipedia.org/wiki/Z-Wave) compatible device for monitoring and reporting garage door status, 
 temp changes, etc.  The hardware components included here:
@@ -55,7 +55,7 @@ and Node.js and the Open Z-Wave library:
 
 + Internet connectivity for updating the TOD, installing packages and upgrading Angstrom. 
 + Wanted to use a static IP address but instead used the equivalent method of doing a DHCP reservation based on MAC. 
-![dhcp reserve](https://github.com/rconstantin/Final-Project/blob/master/README_media/DHCP_IP.png)
+![dhcp reserve](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/DHCP_IP.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL0RIQ1BfSVAucG5nIiwiZXhwaXJlcyI6MTQwMDc2Nzk2NH0%3D--041c081c9221bde38fe3799aefb5b7d0af6da52b)
 + For the Node-OpenzWave, I needed install on the beaglebone using the following steps:
 	+ opkg install python-misc
 	+ opkg install systemd-dev (udev-dev is deprecated, you want systemd-dev instead to get the udev headers.)
@@ -82,19 +82,18 @@ Added local Client Door Sensor Knob (On/Off) to periodically monitor the state o
 
 + create a developer (free) account
 + register the beagle bone and a channel for the Door Sensor: the FeedID, FeedURL and Door Sensor handle are used to push Door status info from the Beagle Bone
-![XivelyAPI](https://github.com/rconstantin/Final-Project/blob/master/README_media/XivelyAPI.png)
+![XivelyAPI](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/XivelyAPI.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL1hpdmVseUFQSS5wbmciLCJleHBpcmVzIjoxNDAwNzY3OTExfQ%3D%3D--6d4701dae9c3ed0d41bee4d4ac44fe7f198cb10f)
 
 #### (5) Demo
 
 + Door Open: remove the magnet away from Door Sensor to simulate garage door opening
-![Door Open](https://github.com/rconstantin/Final-Project/blob/master/README_media/DoorOpen.png)
+![Door Open](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/DoorOpen.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL0Rvb3JPcGVuLnBuZyIsImV4cGlyZXMiOjE0MDA3Njc4NTZ9--1347677b28ba5aad296305b3158a189680df1e65)
 + Door Closed: align the magnet against the door sensor to simulate the garage door closing
-![Door Closed](https://github.com/rconstantin/Final-Project/blob/master/README_media/DoorClosed.png)
+![Door Closed](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/DoorClosed.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL0Rvb3JDbG9zZWQucG5nIiwiZXhwaXJlcyI6MTQwMDc2ODA3MH0%3D--af79f927a006cc16c270f3e0c6364a234b04c88c)
 + Door Open for more than 5 minutes: Email is generated when door is left open for more than 5 minutes
-![Door Open Long](https://github.com/rconstantin/Final-Project/blob/master/README_media/email_door_open.png)
+![Door Open Long](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/email_door_open.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2VtYWlsX2Rvb3Jfb3Blbi5wbmciLCJleHBpcmVzIjoxNDAwNzY4MDkzfQ%3D%3D--981c202b9c15b9fe4b524e7edb02d5331f05023c)
 + Door Closed: Email indicating door is closed - only sent after email door open notification
-![Door Open Email Clear](https://github.com/rconstantin/Final-Project/blob/master/README_media/email_door_closed.png)
-
+![Door Open Email Clear](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/email_door_closed.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2VtYWlsX2Rvb3JfY2xvc2VkLnBuZyIsImV4cGlyZXMiOjE0MDA3NjgxMTR9--2d71dcaf214895b3942bb11ed1928e8f3c872689
 
 ---
 
