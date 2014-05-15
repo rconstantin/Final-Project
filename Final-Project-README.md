@@ -20,7 +20,7 @@ I found a ["Ninja Blocks Shield"](http://ninjablocks.com/collections/ninja-block
 a cape that provides wireless capability and a z-wave API. 
 The timeframe for delivery of this cape fell outside the window of this project (it will have to do for a future project). 
 So instead, I turned to a Node.js z-wave library (see reference above). It took some time and effort to get all the necessary components installed and 
-building on the BeagleBone and then some tougher times to get it to work with the Aeon Sensor (More details to follow in ![section 2]). 
+building on the BeagleBone and then some tougher times to get it to work with the Aeon Sensor. 
 
 Next, I turned my attention to my second requirement: to able to remotely monitor and control my HA components. 
 I looked into a web hosting solution but that required some monetary investment and building a server side support. 
@@ -33,7 +33,7 @@ sent out when certain conditions are reached.
 
 #### Hardware Setup & Software components:
 
-!['Hardware Setup']()
+![Hardware Setup](https://github.com/rconstantin/Final-Project/blob/master/README_media/beaglebone%20with%20zwave%20devices.png)
 
 The ["Z-wave protocol"](http://en.wikipedia.org/wiki/Z-Wave) compatible device for monitoring and reporting garage door status, 
 temp changes, etc.  The hardware components included here:
@@ -55,11 +55,11 @@ and Node.js and the Open Z-Wave library:
 
 + Internet connectivity for updating the TOD, installing packages and upgrading Angstrom. 
 + Wanted to use a static IP address but instead used the equivalent method of doing a DHCP reservation based on MAC. 
-![dhcp reserve]()
+![dhcp reserve](https://github.com/rconstantin/Final-Project/blob/master/README_media/DHCP_IP.png)
 + For the Node-OpenzWave, I needed install on the beaglebone using the following steps:
-++ opkg install python-misc
-++ opkg install systemd-dev (udev-dev is deprecated, you want systemd-dev instead to get the udev headers.)
-++ npm install openzwave
+	+ opkg install python-misc
+	+ opkg install systemd-dev (udev-dev is deprecated, you want systemd-dev instead to get the udev headers.)
+	+ npm install openzwave
 
 ![A screenshot from the app](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/beaglebone%20with%20zwave%20devices.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2JlYWdsZWJvbmUgd2l0aCB6d2F2ZSBkZXZpY2VzLnBuZyIsImV4cGlyZXMiOjE0MDA2OTc0NzZ9--2423b5f57b54d6f67be9fe297bc3d64ff364f7aa)
 
@@ -82,19 +82,18 @@ Added local Client Door Sensor Knob (On/Off) to periodically monitor the state o
 
 + create a developer (free) account
 + register the beagle bone and a channel for the Door Sensor: the FeedID, FeedURL and Door Sensor handle are used to push Door status info from the Beagle Bone
-![XivelyAPI]()
-+ 
+![XivelyAPI](https://github.com/rconstantin/Final-Project/blob/master/README_media/XivelyAPI.png)
 
 #### (5) Demo
 
-+ Door Open:
-
-+ Door Closed: 
-
-+ Door Open for more than 5 minutes:
-
-+ Door Closed:
-
++ Door Open: remove the magnet away from Door Sensor to simulate garage door opening
+![Door Open](https://github.com/rconstantin/Final-Project/blob/master/README_media/DoorOpen.png)
++ Door Closed: align the magnet against the door sensor to simulate the garage door closing
+![Door Closed](https://github.com/rconstantin/Final-Project/blob/master/README_media/DoorClosed.png)
++ Door Open for more than 5 minutes: Email is generated when door is left open for more than 5 minutes
+![Door Open Long](https://github.com/rconstantin/Final-Project/blob/master/README_media/email_door_open.png)
++ Door Closed: Email indicating door is closed - only sent after email door open notification
+![Door Open Email Clear](https://github.com/rconstantin/Final-Project/blob/master/README_media/email_door_closed.png)
 
 
 ---
@@ -103,9 +102,10 @@ Added local Client Door Sensor Knob (On/Off) to periodically monitor the state o
 
 + ["What's in an HTTP request?"](http://rve.org.uk/dumprequest) and ["HTTP Request/Response Basics"](http://devhub.fm/http-requestresponse-basics/) are good places to start to understand how we might use HTTP to interact with APIs.
 + ["What's Z-wave?"](http://en.wikipedia.org/wiki/Z-Wave)
---
 
-#### Notes on (2):
+---
+
+#### Implementation notes on (2):
 
 Changes to get open-zwave to install and compile cleanly:
 
