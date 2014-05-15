@@ -1,7 +1,5 @@
 # Final Project
 
----
-
 ### How things came together
 
 For the `Final-Project`, I am building home automation platform based on the 
@@ -55,7 +53,7 @@ and Node.js and the Open Z-Wave library:
 
 + Internet connectivity for updating the TOD, installing packages and upgrading Angstrom. 
 + Wanted to use a static IP address but instead used the equivalent method of doing a DHCP reservation based on MAC. 
-![dhcp reserve](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/DHCP_IP.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL0RIQ1BfSVAucG5nIiwiZXhwaXJlcyI6MTQwMDc2Nzk2NH0%3D--041c081c9221bde38fe3799aefb5b7d0af6da52b)
+![dhcp reserve](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/DHCP_IP.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL0RIQ1BfSVAucG5nIiwiZXhwaXJlcyI6MTQwMDc2ODc0NX0%3D--5461822c22cebf35278c797c1259283c3d752b1e)
 + For the Node-OpenzWave, I needed install on the beaglebone using the following steps:
 	+ opkg install python-misc
 	+ opkg install systemd-dev (udev-dev is deprecated, you want systemd-dev instead to get the udev headers.)
