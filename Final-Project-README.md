@@ -69,6 +69,9 @@ to support monitoring notifications from the new D/W Sensor.
 + I used Node.js's HTTP Request to send state changes to Xively and to Local web host and Node.js 'nodemailer' to send email 
 notifying the user about extended alarm states (door open for longer than expected).
 
+The handling for event notification and interaction with localhost and Xively API were coded in ["finalPro.js"](https://github.com/rconstantin/Final-Project/blob/master/my-node-openzwave/finalPro.js)		
+
+
 #### (3) User Interface:
 
 LocalHost: using MAMP 'http://final-project/' or 'file:///Users/robbie/Sites/Final-Project/index.html'
@@ -111,13 +114,56 @@ If the correct version information is displayed then maybe there is an issue in 
 The problem you are having occurs in configure.js so you could modify it. Here are lines 104 through 108 of configure.js:
 
   if (semver.gte(version, '2.5.0') && semver.lt(version, '3.0.0')) {
-    getNodeDir()
+  
+		getNodeDir()
+		
   } else {
-    failPythonVersion(version)
+  
+		failPythonVersion(version)
+		
   }
   
 Replace all five lines with the following one:
 
-   getNodeDir();
+   		getNodeDir();
   
 The full path for configure.js is: /usr/lib/node_modules/npm/node_modules/node-gyp/lib/configure.js
+
+Additions to openzwave.cc ["openzwave.cc"](https://github.com/rconstantin/Final-Project/tree/master/my-node-openzwave/src/openzwave.cc):
+
+		/*
+		 * Node Event Notification from Door/Window Sensor.
+		 */
+		case OpenZWave::Notification::Type_NodeEvent:
+		{
+			
+			OpenZWave::ValueID value = notif->values.front();
+			
+			Local<Object> valobj = Object::New();
+			valobj->Set(String::NewSymbol("type"),
+				    String::New(OpenZWave::Value::GetTypeNameFromEnum(value.GetType())));
+
+			uint8_t evt = notif->event;
+			// write latest state/event into text file named: node_it.txt
+			char filename[10];
+			sprintf(filename, "%d",notif->nodeid);
+			strcat (filename,".txt");
+			zfp = fopen(filename, "w");
+			fprintf(zfp,"%d", evt);
+			fflush(zfp);
+			fclose(zfp);
+			//OpenZWave::ValueID value(evt);
+			//uint8_t val;
+			//OpenZWave::Manager::Get()->GetValueAsByte(value, &val);
+			valobj->Set(String::NewSymbol("value"), Integer::New(evt));
+
+			args[0] = String::New("node event");
+			args[1] = Integer::New(notif->nodeid);
+			args[2] = Integer::New(value.GetCommandClassId());
+			fprintf(ofp, "Incoming notification ValueID type: %d EVENT: %d\n", value.GetType(), evt);
+			fflush(ofp);
+			args[3] = valobj;
+			MakeCallback(context_obj, "emit", 4, args);
+			break;
+		}
+		
