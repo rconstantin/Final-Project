@@ -97,7 +97,7 @@ Added local Client Door Sensor Knob (On/Off) to periodically monitor the state o
 
 ## Resources
 
-+ ["What's in an HTTP request?"](http://rve.org.uk/dumprequest) and ["HTTP Request/Response Basics"](http://devhub.fm/http-requestresponse-basics/) are good places to start to understand how we might use HTTP to interact with APIs.
++ ["What's in an Node.js HTTP request?"](http://nodejs.org/api/)
 + ["What's Z-wave?"](http://en.wikipedia.org/wiki/Z-Wave)
 
 ---
