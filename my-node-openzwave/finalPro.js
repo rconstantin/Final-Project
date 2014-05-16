@@ -165,7 +165,59 @@ zwave.on('notification', function(nodeid, notif) {
 		break;
     }
 });
+
+function putXively(a) {
+
+	console.log("preparing Xively JSON data for PUT");
+	var data = JSON.stringify({
+		title: 'My feed',
+		version: '1.0.0',
+		datastreams : [ 
+		   { id:"door_sensor", current_value: a }]
+	});
+
+	var http = require('http');
+	var options = {
+		host: 'api.xively.com',
+		port: '80',  	
+		path: '/v2/feeds/1171243222',
+		method: 'PUT',
+		headers: {
+			'X-ApiKey': 'xaVUEp2tZPNqrA87YtfrulZs10vrVep1pBZ6p1xuXFtS2XtR',
+			'Content-Type': 'application/json',
+			'Content-Length': data.length
+		}
+	};
+	console.log("options: " + options);
+	callback = function(response) { 			
+		response.setEncoding('utf8');
+		console.log('Status Code: ' + response.statusCode);
+		console.log('Headers:');
+		console.log(response.headers);
+
+		var buffer = '';
+		response.on('data', function(chunk) {
+			buffer += chunk;
+		});
+		response.on('end', function() {
+			console.log('complete');
+			console.log(buffer);
+		});
+	}
+
+	var req = http.request(options, callback);
+
+	req.write(data);
+
+	req.end();
+
+	req.on('error', function (err) {
+    	console.log(err);
+	});
+}
 zwave.on('node event', function(nodeid, comclass, value) {
+	// check for internet connectivity before going too far
+
 	//console.log("Received Value Changed for NodeId = " + nodeid + " comClass = " + " Value:label = " + value[0]['label']);
 	if (nodes[nodeid]['ready']) {
 		console.log('node%d: changed: %d:%s->%s', nodeid, comclass,
@@ -184,7 +236,9 @@ zwave.on('node event', function(nodeid, comclass, value) {
 	if (value['value'] == 0) {
         console.log("Setting P9_14 to " + 0 + " Door has beed closed:)");
         b.analogWrite("P9_14", 0);
+        
         putXively("Door Closed");
+        
         if (myTimer1) {
         	cancelSensorTimer();
         }
@@ -195,7 +249,9 @@ zwave.on('node event', function(nodeid, comclass, value) {
     else {
         console.log("Setting P9_14 to " + 1 + " Door IS OPEN");
         b.analogWrite("P9_14", 1);
+        
         putXively("Door Open");
+       
         if (!myTimer1) {
         	myTimer1 = setTimeout(function() {
             	transport.sendMail(mailOptionsOpen); 
@@ -229,48 +285,6 @@ process.on('SIGINT', function() {
 //    }
 //});
 
-
-function putXively(a) {
-	var data = JSON.stringify({
-		title: 'My feed',
-		version: '1.0.0',
-		datastreams : [ 
-		   { id:"door_sensor", current_value: a }]
-	});
-
-	var http = require('http');
-	var options = {
-		host: 'api.xively.com',
-		port: '80',  	
-		path: '/v2/feeds/1171243222',
-		method: 'PUT',
-		headers: {
-			'X-ApiKey': 'xaVUEp2tZPNqrA87YtfrulZs10vrVep1pBZ6p1xuXFtS2XtR',
-			'Content-Type': 'application/json',
-			'Content-Length': data.length
-		}
-	};
-	callback = function(response) { 			
-		response.setEncoding('utf8');
-		console.log('Status Code: ' + response.statusCode);
-		console.log('Headers:');
-		console.log(response.headers);
-
-		var buffer = '';
-		response.on('data', function(chunk) {
-			buffer += chunk;
-		});
-		response.on('end', function() {
-			console.log('complete');
-			console.log(buffer);
-		});
-	}
-	// var req = http.request(options, callback)
-	var req = http.request(options, callback);
-
-	req.write(data);
-	req.end();
-}
 // var state = b.LOW;
 
 // function toggle() {
@@ -313,9 +327,9 @@ function httpserver (req, res) {
         	if (err) {
         		return console.log(err);
         	}
-        	console.log("data: " + data);
+        	//console.log("data: " + data);
         	result = data;
-        	console.log("result: " + result);
+        	//console.log("result: " + result);
         
         	res.setHeader('Access-Control-Allow-Origin','*');
         	res.writeHead(200);
@@ -361,7 +375,7 @@ function httpserver (req, res) {
     }
     else if (url == '/readSensor') {
         // if we go to 192.168.7.2:8080/readPot
-        console.log("Request to read sensor state");
+        //console.log("Request to read sensor state");
         var sensorRead = readTextFile('3.txt');
         //readTextFile('3.txt');//, function(x) { returnSuccess(res,"" + x);});
         //console.log("updated sensor read: " + sensorRead);
