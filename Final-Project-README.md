@@ -69,7 +69,11 @@ to support monitoring notifications from the new D/W Sensor.
 + I used Node.js's HTTP Request to send state changes to Xively and to Local web host and Node.js 'nodemailer' to send email 
 notifying the user about extended alarm states (door open for longer than expected).
 
-The handling for event notification and interaction with localhost and Xively API were coded in ["finalPro.js"](https://github.com/rconstantin/Final-Project/blob/master/my-node-openzwave/finalPro.js)		
++ The handling for event notification and interaction with localhost and Xively API were coded in ["finalPro.js"](https://github.com/rconstantin/Final-Project/blob/master/my-node-openzwave/finalPro.js)
+
++ Added error event handling when there is no internet connectivity: Node.js excepts handling of error notification event when an error occurs while in dns.js other the programs exists: 
+
+	req.on('error', function (err) {// do something;});
 
 
 #### (3) User Interface:
