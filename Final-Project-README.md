@@ -105,7 +105,7 @@ Added local Client Door Sensor Knob (On/Off) to periodically monitor the state o
 + Add more zwave devices: thermostats and light switches
 + Add a more robust method to run Node finalPro.js on beaglebone: cron job script or equivalent with restart capability in case Node.js exits.
 + Add a user interface to my Xively monitored devices
-+ Investigate TheThingSystem and see if I could use the steward for unified control of different home automation components.
++ Investigate ["TheThingSystem"](http://thethingsystem.com/) and see if I could use the steward for unified control of different home automation components.
 
 ## Resources
 
