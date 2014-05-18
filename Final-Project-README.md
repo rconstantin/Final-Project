@@ -101,6 +101,11 @@ Added local Client Door Sensor Knob (On/Off) to periodically monitor the state o
 ![Door Open Email Clear](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/email_door_closed.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2VtYWlsX2Rvb3JfY2xvc2VkLnBuZyIsImV4cGlyZXMiOjE0MDA3NjgxMTR9--2d71dcaf214895b3942bb11ed1928e8f3c872689)
 
 ---
+## Future enhancements
++ Add more zwave devices: thermostats and light switches
++ Add a more robust method to run Node finalPro.js on beaglebone: cron job script or equivalent with restart capability in case Node.js exits.
++ Add a user interface to my Xively monitored devices
++ Investigate TheThingSystem and see if I could use the steward for unified control of different home automation components.
 
 ## Resources
 
