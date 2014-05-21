@@ -59,8 +59,6 @@ and Node.js and the Open Z-Wave library:
 	+ opkg install systemd-dev (udev-dev is deprecated, you want systemd-dev instead to get the udev headers.)
 	+ npm install openzwave
 
-![A screenshot from the app](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/beaglebone%20with%20zwave%20devices.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2JlYWdsZWJvbmUgd2l0aCB6d2F2ZSBkZXZpY2VzLnBuZyIsImV4cGlyZXMiOjE0MDA2OTc0NzZ9--2423b5f57b54d6f67be9fe297bc3d64ff364f7aa)
-
 #### (2) Node-OpenZwave Extensions: 
 
 + In the Node-openZwave library I extended ["openzwave.cc"](https://github.com/rconstantin/Final-Project/tree/master/my-node-openzwave/src/openzwave.cc) 
