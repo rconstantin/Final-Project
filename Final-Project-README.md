@@ -81,7 +81,7 @@ notifying the user about extended alarm states (door open for longer than expect
 LocalHost: using MAMP 'http://final-project/' or 'file:///Users/robbie/Sites/Final-Project/index.html'
 Added local Client Door Sensor Knob (On/Off) to periodically monitor the state of the door from a local client using the HTTP GET method: Door Sensor 'On/Off' will turn polling on or off. When Polling is 'Off', the circle's background color is 'White' and when Polling is 'On' the circle is either 'Red' is Door Sensor is separated from magnet (i.e the Door is Open) or 'Green' if the door is closed.
 
-![LocalHost polling door sensor state changes](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/client_monitor.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2NsaWVudF9tb25pdG9yLnBuZyIsImV4cGlyZXMiOjE0MDA2OTczNzd9--5e45219c7b1b8e757cfb870afc93014ce5dd9000)
+![LocalHost polling door sensor state changes](https://raw.githubusercontent.com/rconstantin/Final-Project/master/README_media/client_monitor.png?token=5402981__eyJzY29wZSI6IlJhd0Jsb2I6cmNvbnN0YW50aW4vRmluYWwtUHJvamVjdC9tYXN0ZXIvUkVBRE1FX21lZGlhL2NsaWVudF9tb25pdG9yLnBuZyIsImV4cGlyZXMiOjE0MDEzMDM2MDd9--529a8d5b1edcea90979d8e1a8a386f17193f4d3a)
 
 #### (4) Xively API
 
